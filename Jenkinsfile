@@ -1,4 +1,4 @@
-pipelie {
+pipeline {
   agent none
 
   parameters {

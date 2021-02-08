@@ -25,12 +25,12 @@ pipeline {
               sh "$NEOLOAD --version"
           }
         }
-/*        stage('Get NeoLoad project'){
+        stage('Get NeoLoad project'){
             steps {
                 sh 'rm -f *.yml; wget https://raw.githubusercontent.com/Neotys-Labs/neoload-cli/78a1366743b041088f357f0f702babfce5e55187/tests/neoload_projects/simpledemo.yml'
             }
         }
-*/        stage('Prepare NeoLoad test') {
+        stage('Prepare NeoLoad test') {
           steps {
               sh """$NEOLOAD \
                      login --url ${params.api_url} ${params.token} \

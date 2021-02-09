@@ -4,7 +4,7 @@ pipeline {
   parameters {
     string(defaultValue: "XJTmuUe9QQURKax0yvn2YOhX", description: 'Neoload Web Token', name: 'token')
     string(defaultValue: "defaultzone", description: 'Zone identifier', name: 'zone_id')
-    string(defaultValue: "https://dockerps1.apps.neotys.com:8080/", description: 'NeoLoad Web Api Url', name: 'api_url')
+    string(defaultValue: "https://dockerps1.apps.neotys.com:8080", description: 'NeoLoad Web Api Url', name: 'api_url')
   }
 
   stages {
@@ -33,7 +33,7 @@ pipeline {
         stage('Prepare NeoLoad test') {
           steps {
               sh """$NEOLOAD \
-                     login --url ${params.api_url} ${params.token} \
+                     login --url ${params.api_url} --ssl-cert False ${params.token} \
                      test-settings --zone ${params.zone_id} --scenario 'simpledemo' createorpatch "My Jenkins Test With CLI" \
                      project --path simpledemo.yml upload
                 """
